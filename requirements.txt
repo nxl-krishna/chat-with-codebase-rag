@@ -1,6 +1,9 @@
+streamlit
 langchain
+langchain-groq
+langchain-huggingface
 langchain-community
-langchain-google-genai
 faiss-cpu
 python-dotenv
-tiktoken   
+tiktoken
+sentence-transformers

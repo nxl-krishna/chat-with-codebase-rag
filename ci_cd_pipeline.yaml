@@ -1,0 +1,32 @@
+name: Update RAG Knowledge Base
+
+# Trigger this action whenever code is pushed to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  re-ingest-codebase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install RAG Dependencies
+        run: |
+          pip install langchain langchain-groq faiss-cpu
+
+      - name: Run Ingestion Script
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          # This simulates the "Auto-Update" logic
+          # In a real app, this would push the new 'vectorstore' to your server
+          python ingest.py
+          echo "Database has been refreshed with the latest commit!"
