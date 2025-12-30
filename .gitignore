@@ -1,3 +1,5 @@
 .env
-rag_env/
+vectorstore/
+uploaded_code/
 __pycache__/
+venv/
